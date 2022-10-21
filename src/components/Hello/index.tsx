@@ -1,6 +1,8 @@
+import Box from '@mui/material/Box';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCounter, setCounter } from 'state/slices/layoutSlice';
+import Button from 'components/Button';
 import icon from '../../../assets/icon.svg';
 
 const Hello = () => {
@@ -8,28 +10,30 @@ const Hello = () => {
   const counter = useSelector(selectCounter);
 
   return (
-    <div>
+    <Box display="flex" flexDirection="column" alignItems="center">
       <div className="Hello">
         <img width="200" alt="icon" src={icon} />
       </div>
       <h1>electron-react-boilerplate</h1>
-      <div>{counter}</div>
-      <button
-        type="button"
-        onClick={() => {
-          dispatch(setCounter(counter + 1));
-        }}
-      >
-        Add
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          dispatch(setCounter(counter - 1));
-        }}
-      >
-        Minus
-      </button>
+      <Box display="flex" alignItems="center" gap="20px">
+        <Button
+          label="Minus"
+          width="100px"
+          // margin="20px 0 0 0"
+          onClick={() => {
+            dispatch(setCounter(counter - 1));
+          }}
+        />
+        <div>{counter}</div>
+        <Button
+          label="Add"
+          width="100px"
+          // margin="20px 0 0 0"
+          onClick={() => {
+            dispatch(setCounter(counter + 1));
+          }}
+        />
+      </Box>
       <div className="Hello">
         <a
           href="https://electron-react-boilerplate.js.org/"
@@ -49,15 +53,12 @@ const Hello = () => {
           rel="noreferrer"
         >
           <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
+            <NavLink to="/login">to login page</NavLink>
           </button>
         </a>
-        <NavLink to="/login">to login page</NavLink>
+        {/* <NavLink to="/login">to login page</NavLink> */}
       </div>
-    </div>
+    </Box>
   );
 };
 

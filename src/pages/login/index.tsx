@@ -5,7 +5,7 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = () => (
-  <div className="test">login page</div>
+  <div className="test">this is login page</div>
 );
 
 export default Login;
